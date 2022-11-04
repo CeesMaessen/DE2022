@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  training-api:
+    build:
+      context: ./training-api
+    container_name: training-api
+    ports:
+      - "5002:5000"
+    networks:
+    - network-b
+    environment:
+    - MODEL_REPO=/src/sr/models2
+    volumes: 
+    - /home/c.j.w.maessen/models:/src/sr/models2
+
+  prediction-api:
+    build:
+      context: ./prediction-api
+    container_name: prediction-api
+    depends_on:
+    - training_api
+    ports:
+      - "5001:5000"
+    networks:
+    - network-a
+    - network-b
+    environment:
+    - MODEL_REPO=/src/sr/models2
+    volumes: 
+    - /home/c.j.w.maessen/models:/src/sr/models2
+
+  prediction-ui:
+    build:
+      context: ./prediction-ui
+    container_name: prediction_ui
+    depends_on:
+    -prediction_api
+    ports:
+    - "5000:5000"
+    networks:
+    - network-a
+    environment:
+    - PREDICTOR_API=http://predictor-api-server:5000/diabetes_predictor
+    
+
+networks:
+  network-a:
+  network-b:
