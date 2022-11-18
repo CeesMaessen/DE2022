@@ -4,17 +4,17 @@ volumes:
   spark-data:
     driver_opts:
       type: none
-      device: /home/c_j_w_maessen/data  
+      device: /home/c_j_w_maessen/DE2022/lab6/data  
       o: bind
   notebooks:
     driver_opts:
       type: none
-      device: /home/c_j_w_maessen/notebooks
+      device: /home/c_j_w_maessen/DE2022/lab6//notebooks
       o: bind
   spark-checkpoint:
     driver_opts:
       type: none
-      device: /home/c_j_w_maessen/checkpoint
+      device: /home/c_j_w_maessen/DE2022/lab6//checkpoint
       o: bind
 services:
   spark-driver-app:
