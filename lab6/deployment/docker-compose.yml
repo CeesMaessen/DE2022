@@ -4,17 +4,17 @@ volumes:
   spark-data:
     driver_opts:
       type: none
-      device: /home/indika_kuma/data
+      device: /home/c_j_w_maessen/data  
       o: bind
   notebooks:
     driver_opts:
       type: none
-      device: /home/indika_kuma/notebooks
+      device: /home/c_j_w_maessen/notebooks
       o: bind
   spark-checkpoint:
     driver_opts:
       type: none
-      device: /home/indika_kuma/checkpoint
+      device: /home/c_j_w_maessen/checkpoint
       o: bind
 services:
   spark-driver-app:
